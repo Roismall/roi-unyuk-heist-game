@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Heist — a top-down stealth heist game</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0e18; }
+  #game {
+    position: fixed; inset: 0; margin: auto;
+    width: min(100vw, 145.8vh); height: auto; aspect-ratio: 1280 / 878;
+    display: block; touch-action: none; background: #1c2436;
+  }
+  /* Read aloud, never shown: the status line screen readers announce. */
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<canvas id="game" aria-label="Meridian Heist: sneak past guards and cameras, steal the loot and escape"></canvas>
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
