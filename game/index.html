@@ -1,24 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meridian Heist — a top-down stealth heist game</title>
+<title>Meridian Heist</title>
 <link rel="icon" href="data:,">
 <style>
-  html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0e18; }
-  #game {
-    position: fixed; inset: 0; margin: auto;
-    width: min(100vw, 145.8vh); height: auto; aspect-ratio: 1280 / 878;
-    display: block; touch-action: none; background: #1c2436;
-  }
-  /* Read aloud, never shown: the status line screen readers announce. */
-  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  html, body { margin: 0; padding: 0; background: #0d1220; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; font-family: sans-serif; }
+  #wrap { width: min(960px, 100vw); }
+  canvas { display: block; width: 100%; height: auto; background: #0d1220; }
+  #hint { color: #8a93b8; text-align: center; font-size: 13px; padding: 8px 0; }
 </style>
 </head>
 <body>
-<canvas id="game" aria-label="Meridian Heist: sneak past guards and cameras, steal the loot and escape"></canvas>
-<p id="status" role="status" aria-live="polite"></p>
-<script type="module" src="./src/main.js"></script>
+<div id="wrap">
+  <canvas id="game" width="960" height="600"></canvas>
+  <div id="hint">WASD / arrows move &middot; Shift sneak &middot; 1 coin lure &middot; 2 camera hack &middot; 3 smoke &middot; P pause &middot; M mute</div>
+</div>
+<script type="module">
+  import { Game } from "./engine.js";
+  const game = new Game(document.getElementById("game"));
+  window.__game = game;
+  game.start();
+</script>
 </body>
 </html>
